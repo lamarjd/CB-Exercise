@@ -21,12 +21,27 @@ let hasA = function(s) {
 console.log(reject(['breadth', 'GRAPH', 'depth', 'height'], hasA)); // [ 'depth', 'height' ]
 *******************************************************************************/
 
-let reject = function() {
-
+let reject = function(array, cb) {
+    let newArr = []; // create a new array
+    for (let i = 0; i < array.length; i++) { // iterate the array up to the length
+        let ele = array[i]; // create variable for each index of array
+        if (cb(ele) === false) { // if the ele passed through the cb is false
+            newArr.push(ele); // push the element into the new array
+        }
+    }
+    return newArr; // retrun new array
 };
 
 
+let isEven = function(n) {
+    return n % 2 === 0;
+};
+console.log(reject([7, 8, 5, 6, 12, 11], isEven)); // [ 7, 5, 11 ]
 
+let hasA = function(s) {
+    return s.toLowerCase().includes('a');
+};
+console.log(reject(['breadth', 'GRAPH', 'depth', 'height'], hasA)); // [ 'depth', 'height' ]
 
 
 
